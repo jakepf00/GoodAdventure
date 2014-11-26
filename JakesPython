@@ -1,3 +1,5 @@
+#Thank you to Michael and Linux Magazine for the code I've been following :)
+
 #all the beginning stuff
 
 
@@ -30,7 +32,7 @@ gameOver  = 0
 #you can get different stats for different names
 name      = raw_input("What's your name? ")
 if name == "Max":
-	print (name + ", you're just plain stupid.")
+	print ("You're just plain stupid.")
 	maxhealth = 5
 	health    = 5
 	defense   = 0
@@ -38,7 +40,7 @@ if name == "Max":
 	speed     = 0
 	attack    = 1
 elif name == "Gabe":
-	print (name + ", you win.")
+	print ("You win.")
 	health    = 100
 	maxhealth = 100
 	attack    = 10
@@ -121,7 +123,7 @@ def interpret(command ):
 #core game loop. takes input and sends you to command interpreter
 while (gameOver == 0):
 	print
-	interpret(raw_input(name + ">>> "))
+	interpret(raw_input(name + "-> "))
 
 
 
