@@ -1,0 +1,7 @@
+def title()
+	print (" _____     __    ")
+	print ("/  ___\   /  \   ")
+	print ("| |  __  / /\ \  ")
+	print ("| |_| | / /  \ \ ")   
+	print ("\_____//_/    \_\")    
+title()

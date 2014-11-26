@@ -1,0 +1,135 @@
+#all the beginning stuff
+
+
+#this clears the screen
+import os,sys
+def ClearScreen():
+	os.system('cls' if os.name=='nt' else 'clear')
+ClearScreen()
+
+#the title screen
+def title():
+	print ("     _____     __       ")
+	print ("    /  ___|   /  \      ")
+	print ("    | |  __  / /\ \     ")
+	print ("    | |_| | / /  \ \    ")
+	print ("     Good Adventure     ")
+	print (" By Quantum Corporation  ")       
+	print
+title()
+
+#setting up stats
+maxhealth = 10
+health    = 10
+defense   = 1
+magic     = 1
+speed     = 1
+attack    = 2
+gameOver  = 0
+
+#you can get different stats for different names
+name      = raw_input("What's your name? ")
+if name == "Max":
+	print (name + ", you're just plain stupid.")
+	maxhealth = 5
+	health    = 5
+	defense   = 0
+	magic     = 0
+	speed     = 0
+	attack    = 1
+elif name == "Gabe":
+	print (name + ", you win.")
+	health    = 100
+	maxhealth = 100
+	attack    = 10
+	defense   = 10
+	magic     = 10
+	speed     = 10
+else:
+	print ("Nice to meet you, " + name)
+
+#so they know what to do
+print ("Type in help any time for help.")
+print
+
+
+
+
+#all the commands
+
+
+#help menu
+def help():
+	print
+	print (" Help ")
+	print ("======")
+	print ("help")
+	print ("stats")
+	print ("exit")
+	print ("fight")
+	print ("clear")
+
+#displays your stats
+def stats():
+	print
+	print ("    Stats ")
+	print ("==============")
+	print ("Health : " + str(health) + "/" + str(maxhealth))
+	print ("Attack : " + str(attack))
+	print ("Defense: " + str(defense))
+	print ("Magic  : " + str(magic))
+	print ("Speed  : " + str(speed))
+
+#fight
+def fight():
+	enemyhealth  = randint(6,12)
+	enemyattack  = randint(1,3)
+	enemydefense = 1
+	health = health - enemyattack
+
+#sets gameOver to 1 so you can leave the game
+def exit():
+	global gameOver
+	gameOver = 1
+
+
+
+
+
+
+
+#all the stuff keeping the game going
+
+
+#interprets the commands
+def interpret(command ):
+	if (command == "stats"):
+		stats()
+	elif (command == "help"):
+		help()
+	elif (command == "stats"):
+		stats()
+	elif (command == "exit"):
+		exit()
+	elif (command == "fight"):
+		fight()
+	elif (command == "clear"):
+		ClearScreen()
+	else:
+		print ("English, please.")
+
+#core game loop. takes input and sends you to command interpreter
+while (gameOver == 0):
+	print
+	interpret(raw_input(name + ">>> "))
+
+
+
+
+
+
+#finishing stuff
+
+
+#closing statements
+ClearScreen()
