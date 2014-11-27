@@ -30,10 +30,11 @@ DP = 1
 MP = 1
 SP = 1
 AP = 2
+XP = 0
 gameOver  = 0
 
 #you can get different stats for different names
-name      = raw_input("What's your name? ")
+name = raw_input("What's your name? ")
 if name == "Max":
 	print ("You're just plain stupid.")
 	MH = 5
@@ -68,7 +69,6 @@ def help():
 	print
 	print (" Help ")
 	print ("======")
-	print ("help")
 	print ("stats")
 	print ("exit")
 	print ("fight")
@@ -84,19 +84,79 @@ def stats():
 	print ("Defense: " + str(DP))
 	print ("Magic  : " + str(MP))
 	print ("Speed  : " + str(SP))
+	print ("XP     : " + str(XP))
 
 #fight
 def fight():
+	global gameOver
 	global HP
- 	enemyhealth  = randint(6,12)
-        enemyattack  = randint(1,3)
-        enemydefense = 1
-	print ("You see a troll. Its stats are:")
-	print ("Health : " + str(enemyhealth) + "/" + str(enemyhealth))
-	print ("Attack : " + str(enemyattack))
-	print ("Defense: " + str(enemydefense))
-	troll = raw_input("What do you do? ")
-	HP = HP - enemyattack
+	global AP
+	global XP
+	enemyHP = randint(5,7)
+	enemyAP = randint(1,3)
+	while enemyHP > 0:
+		
+		print ("Enemy has " +str(enemyHP) + " health and " + str(enemyAP) + " attack.")
+		global attack
+		attack = raw_input("What do you do? ")
+
+
+
+		if (attack == "attack"):
+			enemyHP = enemyHP - AP
+			print ("You cause " + str(AP) + " damage")
+			if enemyHP < 1:
+				print ("You kill the troll")
+				XPup = randint(10,15)
+				XP = XP + XPup
+			if enemyHP > 0:
+				trollAP = randint(1,3)
+				if trollAP == 1:
+					HP = HP - enemyAP
+					print ("Troll causes " + str(enemyAP) + " damage.")
+					print ("You have " + str(HP) + " health remaining")
+					if HP < 1:
+						print ("You died.")
+						enemyHP = 0
+						gameOver = 1			
+				else:
+					print ("Troll misses attack.")
+
+
+
+		elif (attack == "run"):
+			print ("You get away safely.")
+			enemyHP = 0
+
+
+
+		elif (attack == "help"):
+			print
+			print (" Help ")
+			print ("======")
+			print ("attack")
+			print ("run")
+			print ("stay")
+			print ("inventory")
+
+
+
+		elif (attack == "stay"):
+			trollAP = randint(1,3)
+			if trollAP == 2:
+				HP = HP - enemyAP
+				print ("Troll causes " + str(enemyAP) + " damage.")
+				print ("You have " + str(HP) + " health remaining")
+				if HP < 1:
+					print ("You died.")
+					enemyHP = 0
+					gameOver = 1
+			else:
+				print ("Troll misses attack.")
+
+
+
+
 
 #easter egg
 def easteregg():
